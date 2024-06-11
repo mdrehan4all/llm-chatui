@@ -1,28 +1,30 @@
-<div style="position: fixed;bottom:70px;left:0px;right:0px;padding:10px;top:100px;overflow: scroll;scrollbar-width: none;">
+<div style="position: fixed;bottom:60px;left:0px;right:0px;padding:10px;top:42px;overflow: scroll;scrollbar-width: none;">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-5">
+            <div class="col-md-12">
                 <div *ngFor="let d of message">
-                    <p style="background-color: #009900;color:#ffffff;padding:10px;border-radius: 10px;"><strong>{{ d.role }}</strong>:<br/> <span style="white-space: pre-line">{{ d.content }}</span></p>
+                    <div style="background-color: #009900;color:#ffffff;padding:10px;border-radius: 20px;display:block"><strong>{{ d.role }}</strong>:<br/> <pre>{{ d.content }}</pre></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div style="position: fixed;bottom:0px;left:0px;right:0px;padding:10px;height: 60px;">
+<div style="position: fixed;bottom:0px;left:0px;right:0px;padding:10px;height: 60px;margin:0px auto;text-align: center;">
     
-    <div class="row text-center">
-        <div class="col-2">
-            <button class="btn btn-primary" (click)="resetMessage()">New&nbsp;Chat</button>
+    <div style="display: flex;flex-wrap: wrap;">
+        
+        <div style="flex-basis: 20%;">
+            <button mat-raised-button color="primary" (click)="resetMessage()">New</button>
         </div>
         
-        <div class="col-8">
+        <div style="flex-basis: 60%;padding-left: 10px;padding-right: 10px;">
             <form [formGroup]="form" (submit)="submit()">
-                <input type="text" class="form-control" placeholder="Enter Prompt" formControlName="prompt"/>
+                <input type="text" style="width:100%;display: inline-block;line-height: 30px;border-radius: 20px;" class="form-control" placeholder="Enter Prompt" formControlName="prompt"/>
             </form>            
         </div>
-        <div class="col-2">
-            <button class="btn btn-primary" [disabled]="btnSend != 'Send'" (click)="submit()">{{ btnSend }}</button>
+
+        <div style="flex-basis: 20%;">
+            <button mat-raised-button color="primary" [disabled]="btnSend != 'Send'" (click)="submit()">{{ btnSend }}</button>
         </div>
     </div>
 </div>
