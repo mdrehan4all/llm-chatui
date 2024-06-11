@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-5">
+            <div *ngFor="let d of message">
+                <p><strong>{{ d.role }}</strong>:<br/> <span style="white-space: pre-line">{{ d.content }}</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed;bottom:0px;left:0px;right:0px;padding:10px;">
+    <form [formGroup]="form" (submit)="submit()">
+    <div class="row text-center">
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="resetMessage()">New Chat</button>
+        </div>
+        <div class="col-8">
+            <input type="text" class="form-control" placeholder="Enter Prompt" formControlName="prompt"/>            
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" [disabled]="btnSend != 'Send'">{{ btnSend }}</button>
+        </div>
+    </div>
+    </form>
+</div>
