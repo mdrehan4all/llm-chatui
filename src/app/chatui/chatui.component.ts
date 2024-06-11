@@ -32,14 +32,16 @@ export class ChatuiComponent implements OnInit{
   }
 
   resetMessage(){
+    console.log("RESET")
     this.message = [];
     this.message.push({
       role: "system",
-      content: "You are a friendly assistan that helps write stories"
+      content: ""
     });
 
     this.input = {
-      messages: this.message
+      messages: this.message,
+      max_tokens : 1024
     };
   }
 
