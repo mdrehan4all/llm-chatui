@@ -1,0 +1,60 @@
+.header-area {
+    position: fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    padding:10px;
+    height: 60px;
+    margin:0px auto;
+    text-align: center;
+    background-color: #00000033;
+    line-height: 40px;
+}
+.chat-area {
+    position: fixed;
+    bottom:60px;
+    left:0px;
+    right:0px;
+    padding:10px;
+    top:60px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.input-area {
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    padding:10px;
+    height: 60px;
+    margin:0px auto;
+    text-align: center;
+    background-color: #00000033;
+    input::placeholder {
+        color: #808080;
+    }
+
+    .prompt-input {
+        width:100%;
+        display: inline-block;
+        line-height: 30px;
+        border-radius: 20px;
+        background-color: #00000066;
+        color: #fff;
+        border-color: #00000066;
+    }
+    .prompt-send-btn {
+        position: relative;
+        top: -42px;
+        float: right;
+        right: 3px;
+        border-radius: 16px;
+    }
+    .prompt-menu-btn {
+        position: relative;
+        top: -42px;
+        float: right;
+        left: 3px;
+        border-radius: 16px;
+    }
+}

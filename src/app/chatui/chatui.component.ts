@@ -14,6 +14,7 @@ export class ChatuiComponent implements OnInit{
   input: any;
   message: any = [];
   model: string = '';
+  modelList: any = [];
 
   form: any;
   btnSend: string = 'Send';
@@ -21,8 +22,17 @@ export class ChatuiComponent implements OnInit{
   constructor(private dataService: DataService){}
 
   ngOnInit(): void {
+    this.modelList = [
+      '@cf/meta/llama-2-7b-chat-int8',
+      '@cf/meta/llama-2-7b-chat-fp16',
+      '@hf/nexusflow/starling-lm-7b-beta',
+      '@cf/mistral/mistral-7b-instruct-v0.1-vllm',
+      '@cf/mistral/mistral-7b-instruct-v0.1-vllm',
+      '@cf/qwen/qwen1.5-0.5b-chat'
+    ]
+
     this.response = "";
-    this.model = '@cf/gemma-7b-it' //'@cf/meta/llama-2-7b-chat-int8';
+    this.model = '@hf/nexusflow/starling-lm-7b-beta' //'@cf/meta/llama-2-7b-chat-int8';
 
     this.form = new FormGroup({
       prompt: new FormControl()
@@ -32,7 +42,11 @@ export class ChatuiComponent implements OnInit{
   }
 
   resetMessage(){
-    console.log("RESET")
+    console.log("RESET");
+
+    this.model = localStorage.getItem("model") ?? '@cf/meta/llama-2-7b-chat-int8';
+    console.log(`Model: ${this.model}`);
+
     this.message = [];
     this.message.push({
       role: "system",
@@ -43,6 +57,11 @@ export class ChatuiComponent implements OnInit{
       messages: this.message,
       max_tokens : 1024
     };
+  }
+
+  selectModel(val: string){
+    localStorage.setItem("model", val);
+    this.resetMessage();
   }
 
   submit(){
@@ -70,7 +89,7 @@ export class ChatuiComponent implements OnInit{
     this.dataService.get_result(this.model, input).subscribe((response: any) => {
       this.response = response.result.response;
       //console.log(JSON.stringify(response.result.response));
-      this.message.push({role: "system", content: this.response});
+      this.message.push({role: "assistant", content: this.response});
       this.form.patchValue({ prompt: '' }); // reset input
       this.btnSend = 'Send';
     });

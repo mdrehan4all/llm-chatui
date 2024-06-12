@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [
     provideAnimationsAsync(),
