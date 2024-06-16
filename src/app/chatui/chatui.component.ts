@@ -23,16 +23,21 @@ export class ChatuiComponent implements OnInit{
 
   ngOnInit(): void {
     this.modelList = [
+      '@hf/meta-llama/meta-llama-3-8b-instruct',
+      '@cf/meta/llama-3-8b-instruct',
       '@cf/meta/llama-2-7b-chat-int8',
       '@cf/meta/llama-2-7b-chat-fp16',
       '@hf/nexusflow/starling-lm-7b-beta',
+      '@hf/mistral/mistral-7b-instruct-v0.2',
+      '@hf/thebloke/mistral-7b-instruct-v0.1-awq',
       '@cf/mistral/mistral-7b-instruct-v0.1-vllm',
-      '@cf/mistral/mistral-7b-instruct-v0.1-vllm',
-      '@cf/qwen/qwen1.5-0.5b-chat'
+      '@cf/qwen/qwen1.5-0.5b-chat',
+      '@cf/google/gemma-2b-it-lora',
+      '@hf/google/gemma-7b-it'
     ]
 
     this.response = "";
-    this.model = '@hf/nexusflow/starling-lm-7b-beta' //'@cf/meta/llama-2-7b-chat-int8';
+    this.model = '@hf/meta-llama/meta-llama-3-8b-instruct' //'@cf/meta/llama-2-7b-chat-int8';
 
     this.form = new FormGroup({
       prompt: new FormControl()
@@ -50,7 +55,7 @@ export class ChatuiComponent implements OnInit{
     this.message = [];
     this.message.push({
       role: "system",
-      content: ""
+      content: "Assistant"
     });
 
     this.input = {

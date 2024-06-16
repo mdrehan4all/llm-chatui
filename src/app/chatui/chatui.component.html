@@ -1,15 +1,16 @@
 <div class="header-area">
-    <small style="color:#aaaaaa;margin-top: 10px;">&copy; LLM Chat, All rights reserved | Designed by Md Rehan (<a style="text-decoration: none;" href="tel:+918210614418">mdrehan4all</a>)</small>
+    <small style="color:#aaaaaa;margin-top: 10px;">&copy; LLM Chat, All rights reserved (<a style="text-decoration: none;color:#999" href="https://github.com/mdrehan4all">mdrehan4all</a>)</small>
 </div>
 
 <div class="chat-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div *ngFor="let d of message">
-                    <div style="background-color: #009900;color:#ffffff;padding:10px;border-radius: 20px;display:block;margin-bottom: 5px;">
+                <div *ngFor="let d of message; index as i">
+                    <div style="background-color: #000000;border:1px solid #222;color:#ffffff;padding:10px;padding-left:18px;padding-right:18px;border-radius: 20px;display:block;margin-bottom: 5px;">
                         <strong>{{ d.role }}</strong>: 
-                        <p>{{ d.content }}</p></div>
+                        <span><pre>{{ d.content }}</pre></span>
+                    </div>
                 </div>
             </div>
         </div>
