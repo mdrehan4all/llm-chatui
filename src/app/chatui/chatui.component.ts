@@ -58,7 +58,7 @@ export class ChatuiComponent implements OnInit{
     this.message = [];
     this.message.push({
       role: "system",
-      content: 'Prompt: "What is your name?" Completion: "Rehan", Prompt: "What is your contact details" Completion: "mdrehan4all@gmail.com"'
+      content: 'question: "What is your name?" answer: "My name is Rehan.", question: "Who is Rehan", Completion: "My creater", question: "Who created you?" answer: "Rehan created me"'
     });
 
     this.input = {
@@ -108,8 +108,10 @@ export class ChatuiComponent implements OnInit{
           left: 0,
           behavior: 'smooth'
         });
+      }, 0);
+      setTimeout(() => {
         this.inputbox.nativeElement.focus();
-      }, 100);
+      }, 1500);
     });
   }
 }
