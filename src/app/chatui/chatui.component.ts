@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -8,6 +8,9 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrl: './chatui.component.scss'
 })
 export class ChatuiComponent implements OnInit{
+
+  @ViewChild('input') inputbox: any;
+  @ViewChild('chatarea') chatarea: any;
   
   response: any;
 
@@ -55,7 +58,7 @@ export class ChatuiComponent implements OnInit{
     this.message = [];
     this.message.push({
       role: "system",
-      content: "Assistant"
+      content: 'Prompt: "What is your name?" Completion: "Rehan", Prompt: "What is your contact details" Completion: "mdrehan4all@gmail.com"'
     });
 
     this.input = {
@@ -93,10 +96,20 @@ export class ChatuiComponent implements OnInit{
     this.btnSend = 'Fetching...'
     this.dataService.get_result(this.model, input).subscribe((response: any) => {
       this.response = response.result.response;
+      this.response = this.response.replace(/\n/g, "<br/>");
       //console.log(JSON.stringify(response.result.response));
       this.message.push({role: "assistant", content: this.response});
       this.form.patchValue({ prompt: '' }); // reset input
       this.btnSend = 'Send';
+
+      setTimeout(()=>{
+        this.chatarea.nativeElement.scroll({
+          top: this.chatarea.nativeElement.scrollHeight,
+          left: 0,
+          behavior: 'smooth'
+        });
+        this.inputbox.nativeElement.focus();
+      }, 100);
     });
   }
 }

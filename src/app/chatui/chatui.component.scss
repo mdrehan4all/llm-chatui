@@ -30,8 +30,8 @@
     margin:0px auto;
     text-align: center;
     background-color: #00000033;
-    input::placeholder {
-        color: #808080;
+    textarea::placeholder {
+        color: #aaa;
     }
 
     .prompt-input {
@@ -44,11 +44,15 @@
         border-color: #00000066;
     }
     .prompt-send-btn {
-        position: relative;
-        top: -42px;
-        float: right;
-        right: 3px;
-        border-radius: 16px;
+        //position: relative;
+        //top: -42px;
+        //float: right;
+        //right: 3px;
+        //border-radius: 16px;
+        &:disabled {
+            background-color: #999;
+            color: #fff;
+        }
     }
     .prompt-menu-btn {
         position: relative;

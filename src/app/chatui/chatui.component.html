@@ -2,14 +2,14 @@
     <small style="color:#aaaaaa;margin-top: 10px;">&copy; LLM Chat, All rights reserved (<a style="text-decoration: none;color:#999" href="https://github.com/mdrehan4all">mdrehan4all</a>)</small>
 </div>
 
-<div class="chat-area">
+<div class="chat-area" #chatarea>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div *ngFor="let d of message; index as i">
-                    <div style="background-color: #000000;border:1px solid #222;color:#ffffff;padding:10px;padding-left:18px;padding-right:18px;border-radius: 20px;display:block;margin-bottom: 5px;">
+                    <div *ngIf="d.role != 'system'" style="background-color: #000000;border:1px solid #222;color:#ffffff;padding:10px;padding-left:18px;padding-right:18px;border-radius: 20px;display:block;margin-bottom: 5px;">
                         <strong>{{ d.role }}</strong>: 
-                        <span><pre>{{ d.content }}</pre></span>
+                        <span><p [innerHTML]="d.content"></p></span>
                     </div>
                 </div>
             </div>
@@ -17,9 +17,8 @@
     </div>
 </div>
 <div class="input-area">
-    
     <div style="display: flex;flex-wrap: nowrap;">
-        <div style="flex-basis: 10%;">
+        <div style="flex-basis: 20%;">
             <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Menu</button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="resetMessage()">Restart Chat</button>
@@ -30,11 +29,14 @@
             </mat-menu>              
         </div>
         
-        <div style="flex-basis: 85%;">      
-            <form [formGroup]="form" (submit)="submit()">
-                <input type="text" class="form-control prompt-input" placeholder="Enter Prompt" formControlName="prompt"/>
-                <button mat-raised-button color="primary" class="prompt-send-btn" [disabled]="btnSend != 'Send'">{{ btnSend }}</button>
+        <div style="flex-basis: 60%;">      
+            <form [formGroup]="form">
+                <textarea #input style="height: 42px;overflow-y: hidden;" class="form-control prompt-input" placeholder="Enter Prompt" formControlName="prompt"></textarea>
             </form>
+        </div>
+
+        <div style="flex-basis: 20%;">
+            <button mat-raised-button color="primary" class="prompt-send-btn" [disabled]="btnSend != 'Send'" (click)="submit()">{{ btnSend }}</button>
         </div>
     </div>
 </div>
