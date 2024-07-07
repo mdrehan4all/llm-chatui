@@ -9,7 +9,8 @@
                 <div *ngFor="let d of message; index as i">
                     <div *ngIf="d.role != 'system'" style="background-color: #000000;border:1px solid #222;color:#ffffff;padding:10px;padding-left:18px;padding-right:18px;border-radius: 20px;display:block;margin-bottom: 5px;">
                         <strong>{{ d.role }}</strong>: 
-                        <span><p [innerHTML]="d.content"></p></span>
+                        <!-- <span><p [innerHTML]="d.content"></p></span> -->
+                        <span><p [innerHTML]="d.content | mdpipe"></p></span>
                     </div>
                 </div>
             </div>

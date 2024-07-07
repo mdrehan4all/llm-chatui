@@ -42,7 +42,9 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/bin/marked.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -102,7 +104,9 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/bin/marked.js"
+            ]
           }
         }
       }

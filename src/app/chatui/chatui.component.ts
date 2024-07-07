@@ -58,7 +58,7 @@ export class ChatuiComponent implements OnInit{
     this.message = [];
     this.message.push({
       role: "system",
-      content: 'prompt: "What is your name?" completion: "My name is Rehan."'
+      content: ''
     });
 
     this.input = {
@@ -97,11 +97,12 @@ export class ChatuiComponent implements OnInit{
     this.dataService.get_result(this.model, input).subscribe((response: any) => {
       this.response = response.result.response;
       
-      this.response = this.response.replace(/>/g, "&gt;");
-      this.response = this.response.replace(/</g, "&lt;");
-      this.response = this.response.replace(/\n/g, "<br/>");
-      this.response = this.response.replace(/  /g, "&nbsp;&nbsp;");
-      
+      // this.response = this.response.replace(/>/g, "&gt;");
+      // this.response = this.response.replace(/</g, "&lt;");
+      // this.response = this.response.replace(/\n/g, "<br/>");
+      // this.response = this.response.replace(/  /g, "&nbsp;&nbsp;");
+      // this.response = this.response.replace(/   /g, "&nbsp;&nbsp;&nbsp;");
+      // this.response = this.response.replace(/    /g, "&nbsp;&nbsp;&nbsp;");
       
       //console.log(JSON.stringify(response.result.response));
       this.message.push({role: "assistant", content: this.response});
